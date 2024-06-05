@@ -32,7 +32,8 @@ dataDir = os.path.dirname(current_directory)  # Get the parent directory
 # dataDir = r"C:\Users\aaziz\Documents\MATLAB\PhD Python Code\AASC_DeepLSTM"  # Replace the directory
 
 # mat folder ( matlab)
-mat = scipy.io.loadmat(dataDir + '/data/OLD_data/data_2DOF_SB_BWWN.mat')
+# mat = scipy.io.loadmat(dataDir + '/data/OLD_data/data_2DOF_SB_BWWN.mat')
+mat = scipy.io.loadmat(dataDir + '/LSTMsForNonlinearStructuralSystems/data_2DOF_SB_BWWN.mat')
 
 """Known Data"""
 
