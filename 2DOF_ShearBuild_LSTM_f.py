@@ -226,3 +226,78 @@ for e in range(epochs):  # Loop through the epochs
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
+
+'''
+A/B Testing
+'''
+
+def build_model_A(input_shape, output_shape):
+    model = Sequential()
+    model.add(LSTM(100, return_sequences=True, stateful=False, input_shape=input_shape))
+    model.add(Activation('relu'))
+    model.add(Dense(100))
+    model.add(Dense(output_shape))
+    model.compile(loss='mean_squared_error', optimizer=Adam(learning_rate=0.001), metrics=['mse'])
+    return model
+
+def build_model_B(input_shape, output_shape):
+    model = Sequential()
+    model.add(LSTM(50, return_sequences=True, stateful=False, input_shape=input_shape))
+    model.add(Activation('tanh'))
+    model.add(LSTM(50, return_sequences=True, stateful=False))
+    model.add(Activation('tanh'))
+    model.add(Dense(50))
+    model.add(Dense(output_shape))
+    model.compile(loss='mean_squared_error', optimizer=RMSprop(learning_rate=0.001), metrics=['mse'])
+    return model
+
+input_shape = (None, data_dim)
+output_shape = num_classes
+
+
+
+X_train = X_data_new[0:len(train_indices[0])]
+y_train = y_data_new[0:len(train_indices[0])]
+X_test = X_data_new[len(train_indices[0]):]
+y_test = y_data_new[len(train_indices[0]):]
+
+model_A = build_model_A(input_shape, output_shape)
+model_B = build_model_B(input_shape, output_shape)
+
+history_A = model_A.fit(X_train, y_train, batch_size=batch_size, epochs=10, validation_data=(X_test, y_test), shuffle=True)
+
+history_B = model_B.fit(X_train, y_train, batch_size=batch_size, epochs=10, validation_data=(X_test, y_test), shuffle=True)
+
+score_A = model_A.evaluate(X_test, y_test, batch_size=batch_size)
+print(f'Model A - Test loss: {score_A[0]} / Test accuracy: {score_A[1]}')
+
+score_B = model_B.evaluate(X_test, y_test, batch_size=batch_size)
+print(f'Model B - Test loss: {score_B[0]} / Test accuracy: {score_B[1]}')
+
+
+
+import matplotlib.pyplot as plt
+
+# Plot training & validation loss values
+plt.figure(figsize=(14, 6))
+
+plt.subplot(1, 2, 1)
+plt.plot(history_A.history['loss'])
+plt.plot(history_A.history['val_loss'])
+plt.title('Model A loss')
+plt.xlabel('Epoch')
+plt.ylabel('Loss')
+plt.legend(['Train', 'Test'], loc='upper right')
+
+plt.subplot(1, 2, 2)
+plt.plot(history_B.history['loss'])
+plt.plot(history_B.history['val_loss'])
+plt.title('Model B loss')
+plt.xlabel('Epoch')
+plt.ylabel('Loss')
+plt.legend(['Train', 'Test'], loc='upper right')
+
+plt.show()
