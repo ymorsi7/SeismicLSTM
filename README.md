@@ -55,16 +55,16 @@ To read our report, [click here](files/paper.pdf)
 ## Results
 The results are much more interpretable with the context on the full report (linked above). However, here are some of our output images:
 
-#### Linear Elastic 8-Story Shear Building
+### Linear Elastic 8-Story Shear Building
 ![elsatic 8 story shear building](files/1.png)
 
-#### Nonlinear Inelastic Single Degree Of Freedom (SDOF) Structure
+### Nonlinear Inelastic Single Degree Of Freedom (SDOF) Structure
 ![sdof](files/2.png)
 
-#### Nonlinear Inelastic Multi Degree Of Freedom (MDOF) Structure
+### Nonlinear Inelastic Multi Degree Of Freedom (MDOF) Structure
 ![mdof](files/3.png)
 
-#### A/B Testing
+### A/B Testing
 ![ab testing](files/ab.png)
 
 
