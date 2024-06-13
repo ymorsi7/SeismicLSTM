@@ -24,6 +24,7 @@ Performance-based seismic design (PBSD) of structural systems relies on computat
    pip install numpy matplotlib tensorflow keras scikit-learn joblib
    ```
 3. **Prepare the Data** <br>
+
    Place the MATLAB data file `data_2DOF_SB_BWWN.mat` in the `LSTMsForNonlinearStructuralSystems` directory. This file should be available in the repository or provided separately.
 
 4. **Run the Python File**
