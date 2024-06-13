@@ -26,7 +26,7 @@ Performance-based seismic design (PBSD) of structural systems relies on computat
 3. **Prepare the Data**
    Place the MATLAB data file `data_2DOF_SB_BWWN.mat` in the `LSTMsForNonlinearStructuralSystems` directory. This file should be available in the repository or provided separately.
 
-5. **Run the Python File**
+4. **Run the Python File**
    Execute the provided Python script `2DOF_ShearBuild_LSTM_f.py` to train the LSTM model:
 
    ```bash
