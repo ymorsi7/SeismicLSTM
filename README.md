@@ -10,6 +10,8 @@ Performance-based seismic design (PBSD) of structural systems relies on computat
 
 ![Test-bed structures for surrogate modeling study](files/testbed.png)
 
+![The LSTM network architecture: Full sequence to sequence LSTM network (LSTM-f)](files/lstm.png)
+
 ## Instructions to Set Up and Run the LSTM Model
 
 1. **Clone the Repository**
@@ -49,6 +51,22 @@ Performance-based seismic design (PBSD) of structural systems relies on computat
 
 ## Report
 To read our report, [click here](files/paper.pdf)
+
+## Results
+The results are much more interpretable with the context on the full report (linked above). However, here are some of our output images:
+
+#### Linear Elastic 8-Story Shear Building
+![elsatic 8 story shear building](files/1.png)
+
+#### Nonlinear Inelastic Single Degree Of Freedom (SDOF) Structure
+![sdof](files/2.png)
+
+#### Nonlinear Inelastic Multi Degree Of Freedom (MDOF) Structure
+![mdof](files/3.png)
+
+#### A/B Testing
+![ab testing](files/ab.png)
+
 
 
 
